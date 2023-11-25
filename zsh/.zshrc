@@ -100,10 +100,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-NVIM_BEGINNER=~/.config/nvim-beginner
-export NVIM_BEGINNER
-
-alias nvb='XDG_DATA_HOME=$NVIM_BEGINNER/share XDG_CONFIG_HOME=$NVIM_BEGINNER nvim'
+XDG_DATA_HOME=$HOME/.local/share
+XDG_CONFIG_HOME=$HOME/.config
 
 alias k=kubectl
 complete -o default -F __start_kubectl k
