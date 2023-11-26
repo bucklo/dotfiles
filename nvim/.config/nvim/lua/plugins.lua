@@ -6,6 +6,10 @@ function M.setup()
 
   -- packer.nvim configuration
   local conf = {
+		profile = {
+			enable = true,
+			threshold = 0, -- the amount in ms that a plugins load time must be over for it to be included in the profile
+		},
     display = {
       open_fn = function()
         return require("packer.util").float { border = "rounded" }
@@ -55,11 +59,39 @@ function M.setup()
     -- Git
     use {
       "TimUntersberger/neogit",
+			cmd = "Neogit",
       requires = "nvim-lua/plenary.nvim",
       config = function()
         require("config.neogit").setup()
       end,
     }
+
+		-- WhichKey
+		use {
+			 "folke/which-key.nvim",
+			 event = "VimEnter",
+			 config = function()
+				 require("config.whichkey").setup()
+			 end,
+		}
+
+		-- IndentLine
+		use {
+			"lukas-reineke/indent-blankline.nvim",
+			event = "BufReadPre",
+			config = function()
+				require("config.indentblankline").setup()
+			end,
+		}
+
+		-- Leap
+		use {
+			"ggandor/leap.nvim",
+			config = function()
+				require('leap').add_default_mappings()
+			end,
+		}
+
 
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
