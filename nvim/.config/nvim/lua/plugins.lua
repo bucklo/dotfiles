@@ -92,6 +92,49 @@ function M.setup()
 			end,
 		}
 
+		-- Lualine
+		use {
+			"nvim-lualine/lualine.nvim",
+			event = "VimEnter",
+			config = function()
+				require("config.lualine").setup()
+			end,
+			requires = { "nvim-tree/nvim-web-devicons" },
+		}
+
+		-- nvim-navic
+		use {
+			"SmiteshP/nvim-navic",
+			requires = "neovim/nvim-lspconfig"
+		}
+
+		-- nvim-tree
+		use {
+			"kyazdani42/nvim-tree.lua",
+			requires = {
+			 "kyazdani42/nvim-web-devicons",
+			},
+			cmd = { "NvimTreeToggle", "NvimTreeClose" },
+			 config = function()
+				 require("config.nvimtree").setup()
+			 end,
+		}
+
+		-- fzf
+		use { "junegunn/fzf", run = "./install --all" }
+		use { "junegunn/fzf.vim" }
+		
+
+		-- Buffer line
+		use {
+			"akinsho/nvim-bufferline.lua",
+			event = "BufReadPre",
+			wants = "nvim-web-devicons",
+			config = function()
+				require("config.bufferline").setup()
+			end,
+		}
+
 
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
