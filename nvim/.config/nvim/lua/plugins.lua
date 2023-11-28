@@ -135,6 +135,22 @@ function M.setup()
 			end,
 		}
 
+		use { 
+			"neovim/nvim-lspconfig",
+			config = function()
+				require("config.jsp").setup()
+			end
+		} -- enable LSP
+
+		use { "williamboman/mason.nvim" }
+
+		use { "williamboman/mason-lspconfig.nvim" }
+
+		use { "jose-elias-alvarez/null-ls.nvim" } -- for formatters and linters
+
+		use { "hrsh7th/nvim-cmp" }
+
+		use { "hrsh7th/cmp-nvim-lsp" }
 
     if packer_bootstrap then
       print "Restart Neovim required after installation!"

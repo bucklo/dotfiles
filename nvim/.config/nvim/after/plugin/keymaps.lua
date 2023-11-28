@@ -37,3 +37,11 @@ keymap("n", "<Left>", ":vertical resize +1<CR>", default_opts)
 keymap("n", "<Right>", ":vertical resize -1<CR>", default_opts)
 keymap("n", "<Up>", ":resize -1<CR>", default_opts)
 keymap("n", "<Down>", ":resize +1<CR>", default_opts)
+
+-- Switch buffers
+keymap("n", "<leader>n", ":bnext<cr>", default_opts)
+keymap("n", "<leader>p", ":bprevious<cr>", default_opts)
+keymap("n", "<leader>d", ":bdelete<cr>", default_opts)
+
+-- Open Explorer
+keymap("n", "<leader>e", ":NvimTreeToggle<cr>", default_opts)
