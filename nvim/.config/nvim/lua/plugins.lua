@@ -135,22 +135,55 @@ function M.setup()
 			end,
 		}
 
+		use {
+			"hrsh7th/nvim-cmp",
+			config = function()
+				require("config.nvim-cmp").setup()
+			end,
+		}
+
 		use { 
+			"L3MON4D3/LuaSnip",
+			tag = "v2.*",
+			build = "make install_jsregexp",
+			config = function()
+				require("config.luasnip").setup()
+			end,
+		}
+
+		use {"rafamadriz/friendly-snippets"}
+		use {"hrsh7th/cmp-buffer"}
+		
+		use {
+			"hrsh7th/cmp-nvim-lsp",
+			config = function()
+				require("config.nvim-lsp").setup()
+			end,
+		}
+	
+		use {
 			"neovim/nvim-lspconfig",
 			config = function()
-				require("config.jsp").setup()
+				require("config.lspconfig").setup()
+			end,
+		}
+
+		use {"hrsh7th/cmp-path"}
+		use {"petertriho/cmp-git"}
+		
+		use {
+			"williamboman/mason.nvim",
+			config = function()
+				require("mason").setup()
+			end,
+		}
+		
+		use {
+			"williamboman/mason-lspconfig.nvim",
+			config = function()
+				require("mason-lspconfig").setup()
 			end
-		} -- enable LSP
-
-		use { "williamboman/mason.nvim" }
-
-		use { "williamboman/mason-lspconfig.nvim" }
-
-		use { "jose-elias-alvarez/null-ls.nvim" } -- for formatters and linters
-
-		use { "hrsh7th/nvim-cmp" }
-
-		use { "hrsh7th/cmp-nvim-lsp" }
+		}
 
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
